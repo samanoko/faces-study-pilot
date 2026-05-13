@@ -6,10 +6,14 @@
     
     <meta property="og:title" content="Výzkum vnímání tváří">
     <meta property="og:description" content="Krátký vědecký experiment zaměřený na vnímání atraktivity.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000">
+    <meta property="og:url" content="https://simonockas.me/face-study-pilot/">
+    <meta property="og:type" content="website">
+    
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/15ybaIZueHCqj_nphT6ERH_2YZIWerQnd=s1000">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:type" content="website">
+    
+    <meta property="fb:app_id" content="966242223397117">
 
     <title>Výzkum vnímání tváří</title>
     <style>
@@ -24,7 +28,6 @@
             color: #333; 
         }
         .container { 
-            text-align: center; 
             background: white; 
             padding: 40px; 
             border-radius: 12px; 
@@ -32,6 +35,7 @@
             width: 90%; 
             max-width: 500px; 
             box-sizing: border-box;
+            text-align: center;
         }
         h2 { 
             color: #007bff; 
@@ -75,14 +79,13 @@
     <div class="instruction-box">
         <strong>Instrukce:</strong><br><br>
         1. Klepněte na <b>tři tečky (...)</b> v pravém horním rohu.<br>
-        2. Zvolte možnost <b>"Otevřít v externím prohlížeči"</b>.
+        2. Zvolte možnost <b>"Otevřít v prohlížeči Safari"</b> (případně "Otevřít v externím prohlížeči").
     </div>
     
     <p style="font-size: 14px; color: #888;">Po tomto kroku bude test automaticky zahájen.</p>
 </div>
 
 <script>
-    // Replace the ID below with your actual Google Script Exec URL
     var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyb-ExtSM6mtSwDGxsfbZssjsywPtLdsFuSkPssp8fIgCmz4oWa8L-eBQRPWyZ36oXb/exec";
 
     (function() {
@@ -92,15 +95,16 @@
             var isIOS = /iPhone|iPad|iPod/.test(ua);
 
             if (isInstagram && isIOS) {
+                // Show the professional shield for Instagram iOS users
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('shield-card').style.display = 'block';
             } else {
+                // Redirect everyone else immediately to the Google Script
                 window.location.replace(GOOGLE_SCRIPT_URL);
             }
         } catch (e) {
-            console.error("Redirect error:", e);
-            // Fallback: If everything fails, just show the link
-            document.body.innerHTML = '<div class="container"><h2>Vstup do testu</h2><p>Klikněte prosím <a href="' + GOOGLE_SCRIPT_URL + '">zde</a> pro zahájení.</p></div>';
+            // Emergency fallback if redirect fails
+            document.body.innerHTML = '<div class="container"><h2>Vstup do testu</h2><p><a href="' + GOOGLE_SCRIPT_URL + '">Klikněte zde pro zahájení experimentu</a></p></div>';
         }
     })();
 </script>
