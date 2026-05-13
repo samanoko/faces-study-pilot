@@ -7,12 +7,14 @@
     <meta property="og:title" content="Výzkum vnímání tváří">
     <meta property="og:description" content="Krátký vědecký experiment zaměřený na vnímání atraktivity.">
     <meta property="og:url" content="https://simonockas.me/face-study-pilot/">
-    <meta property="og:type" content="website">
     
     <meta property="og:image" content="https://lh3.googleusercontent.com/d/15ybaIZueHCqj_nphT6ERH_2YZIWerQnd=s1000">
+    <meta property="og:image:secure_url" content="https://lh3.googleusercontent.com/d/15ybaIZueHCqj_nphT6ERH_2YZIWerQnd=s1000">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
+    <meta property="og:type" content="website">
     <meta property="fb:app_id" content="966242223397117">
 
     <title>Výzkum vnímání tváří</title>
@@ -37,30 +39,13 @@
             box-sizing: border-box;
             text-align: center;
         }
-        h2 { 
-            color: #007bff; 
-            margin-top: 0;
-            font-size: 22px;
-        }
-        .left-aligned-text {
-            text-align: left;
-            margin-bottom: 20px;
-        }
+        h2 { color: #007bff; margin-top: 0; font-size: 22px; }
+        .left-aligned-text { text-align: left; margin-bottom: 20px; }
         .instruction-box { 
-            text-align: left; 
-            background: #f8f9fa; 
-            border-left: 4px solid #007bff; 
-            padding: 20px; 
-            margin: 25px 0; 
-            font-size: 16px; 
-            line-height: 1.6;
-            color: #444;
+            text-align: left; background: #f8f9fa; border-left: 4px solid #007bff; 
+            padding: 20px; margin: 25px 0; font-size: 16px; line-height: 1.6; color: #444;
         }
-        .loading-dots {
-            color: #888;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
+        .loading-dots { color: #888; font-size: 14px; letter-spacing: 1px; }
         b { color: #000; }
     </style>
 </head>
@@ -70,18 +55,15 @@
 
 <div id="shield-card" class="container" style="display: none;">
     <h2>Konfigurace prohlížeče</h2>
-    
     <div class="left-aligned-text">
         <p>Děkujeme za Váš zájem o účast v našem výzkumu.</p>
         <p>Experiment je nutné spustit v externím prohlížeči.</p>
     </div>
-    
     <div class="instruction-box">
         <strong>Instrukce:</strong><br><br>
         1. Klepněte na <b>tři tečky (...)</b> v pravém horním rohu.<br>
-        2. Zvolte možnost <b>"Otevřít v prohlížeči Safari"</b> (případně "Otevřít v externím prohlížeči").
+        2. Zvolte možnost <b>"Otevřít v prohlížeči Safari"</b>.
     </div>
-    
     <p style="font-size: 14px; color: #888;">Po tomto kroku bude test automaticky zahájen.</p>
 </div>
 
@@ -95,15 +77,12 @@
             var isIOS = /iPhone|iPad|iPod/.test(ua);
 
             if (isInstagram && isIOS) {
-                // Show the professional shield for Instagram iOS users
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('shield-card').style.display = 'block';
             } else {
-                // Redirect everyone else immediately to the Google Script
                 window.location.replace(GOOGLE_SCRIPT_URL);
             }
         } catch (e) {
-            // Emergency fallback if redirect fails
             document.body.innerHTML = '<div class="container"><h2>Vstup do testu</h2><p><a href="' + GOOGLE_SCRIPT_URL + '">Klikněte zde pro zahájení experimentu</a></p></div>';
         }
     })();
