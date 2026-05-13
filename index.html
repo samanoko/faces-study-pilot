@@ -3,35 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Načítání... | Výzkum tváří</title>
+    <title>Výzkum vnímání tváří</title>
     <style>
-        body { font-family: -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: #f4f7f6; color: #333; }
-        .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 400px; width: 90%; text-align: center; display: none; }
-        .warning-icon { font-size: 48px; margin-bottom: 15px; }
-        h2 { margin-top: 0; color: #d9534f; font-size: 20px; }
-        .instruction-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 15px; border-radius: 8px; text-align: left; margin: 20px 0; font-size: 15px; line-height: 1.5; }
-        .loading-text { color: #888; font-style: italic; font-size: 16px; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #f4f7f6; /* Same light grey as your app */
+            color: #333; 
+        }
+        .container { 
+            text-align: center; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            width: 90%; 
+            max-width: 500px; 
+        }
+        h2 { 
+            color: #007bff; /* Professional Blue */
+            margin-top: 0;
+            font-size: 22px;
+        }
+        .instruction-box { 
+            text-align: left; 
+            background: #f8f9fa; 
+            border-left: 4px solid #007bff; 
+            padding: 20px; 
+            margin: 25px 0; 
+            font-size: 16px; 
+            line-height: 1.6;
+            color: #444;
+        }
+        .loading-dots {
+            color: #888;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        b { color: #000; }
+        
+        /* Matching your main app's button style just in case */
+        .btn-dummy {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-<div id="loader" class="loading-text">Načítání experimentu...</div>
+<div id="loader" class="loading-dots">NAČÍTÁNÍ MODULU...</div>
 
-<div id="shield-card" class="card">
-    <div class="warning-icon">⚠️</div>
-    <h2>Omezení prohlížeče</h2>
-    <p>Detekovali jsme, že používáte iPhone v aplikaci Instagram/Facebook. Tento prohlížeč bohužel blokuje technické moduly experimentu.</p>
+<div id="shield-card" class="container" style="display: none;">
+    <h2>Konfigurace prohlížeče</h2>
+    <p>Pro zajištění správného měření reakčních časů a uložení dat je nutné spustit tento test v nativním prohlížeči Safari.</p>
     
     <div class="instruction-box">
-        <strong>Jak pokračovat:</strong><br>
-        1. Klepněte na <strong>tři tečky (...)</strong> v horním rohu.<br>
-        2. Zvolte <strong>"Otevřít v prohlížeči Safari"</strong>.
+        <strong>Instrukce pro iPhone:</strong><br><br>
+        1. Klepněte na <b>tři tečky (...)</b> v pravém horním rohu.<br>
+        2. Zvolte možnost <b>"Otevřít v prohlížeči Safari"</b>.
     </div>
-    <p style="font-size: 13px; color: #777;">V Safari vše poběží hladce a data se správně uloží.</p>
+    
+    <p style="font-size: 14px; color: #888;">Po tomto kroku bude test automaticky zahájen.</p>
 </div>
 
 <script>
-    // ZDE VLOŽTE SVOU URL Z GOOGLE APPS SCRIPT
+    // Configuration: Replace with your actual Google Script URL
     var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyb-ExtSM6mtSwDGxsfbZssjsywPtLdsFuSkPssp8fIgCmz4oWa8L-eBQRPWyZ36oXb/exec";
 
     (function() {
@@ -40,7 +86,7 @@
         var isIOS = /iPhone|iPad|iPod/.test(ua);
 
         if (isInstagram && isIOS) {
-            // Instagram iOS: Show shield
+            // Instagram iOS: Show professional shield
             document.getElementById('loader').style.display = 'none';
             document.getElementById('shield-card').style.display = 'block';
         } else {
@@ -49,5 +95,6 @@
         }
     })();
 </script>
+
 </body>
 </html>
