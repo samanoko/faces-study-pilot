@@ -16,19 +16,32 @@
             color: #333; 
         }
         .container { 
-            text-align: center; 
+            text-align: center; /* Center-align the whole container's standard content */
             background: white; 
             padding: 40px; 
             border-radius: 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            /* Added side padding as requested (40px) and kept original top/bottom */
+            padding-left: 40px;
+            padding-right: 40px;
             width: 90%; 
             max-width: 500px; 
+            box-sizing: border-box; /* Ensures padding is included in the width calculation */
         }
         h2 { 
             color: #007bff; /* Professional Blue */
             margin-top: 0;
             font-size: 22px;
         }
+        
+        /* The specific paragraphs to left-align */
+        .left-aligned-text {
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%; /* Keep it constrained, though padding already helps */
+        }
+
         .instruction-box { 
             text-align: left; 
             background: #f8f9fa; 
@@ -65,8 +78,11 @@
 
 <div id="shield-card" class="container" style="display: none;">
     <h2>Konfigurace prohlížeče</h2>
-    <p>Ďěkujeme za Váš zájem o účast v našem výzkumu.</p>
-    <p>Experiment je nutné spustit v externím prohlížeči.</p>
+    
+    <div class="left-aligned-text">
+        <p>Děkujeme za Váš zájem o účast v našem výzkumu.</p>
+        <p>Experiment je nutné spustit v externím prohlížeči.</p>
+    </div>
     
     <div class="instruction-box">
         <strong>Instrukce:</strong><br><br>
