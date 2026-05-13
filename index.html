@@ -1,10 +1,14 @@
+<!DOCTYPE html>
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta property="og:title" content="Výzkum vnímání tváří">
     <meta property="og:description" content="Krátký vědecký experiment zaměřený na vnímání atraktivity.">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/d/15ybaIZueHCqj_nphT6ERH_2YZIWerQnd=s1000">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1000">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
 
     <title>Výzkum vnímání tváří</title>
@@ -56,3 +60,50 @@
         b { color: #000; }
     </style>
 </head>
+<body>
+
+<div id="loader" class="loading-dots">NAČÍTÁNÍ MODULU...</div>
+
+<div id="shield-card" class="container" style="display: none;">
+    <h2>Konfigurace prohlížeče</h2>
+    
+    <div class="left-aligned-text">
+        <p>Děkujeme za Váš zájem o účast v našem výzkumu.</p>
+        <p>Experiment je nutné spustit v externím prohlížeči.</p>
+    </div>
+    
+    <div class="instruction-box">
+        <strong>Instrukce:</strong><br><br>
+        1. Klepněte na <b>tři tečky (...)</b> v pravém horním rohu.<br>
+        2. Zvolte možnost <b>"Otevřít v externím prohlížeči"</b>.
+    </div>
+    
+    <p style="font-size: 14px; color: #888;">Po tomto kroku bude test automaticky zahájen.</p>
+</div>
+
+<script>
+    // Replace the ID below with your actual Google Script Exec URL
+    var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyV_YOUR_ACTUAL_ID_HERE/exec";
+
+    (function() {
+        try {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            var isInstagram = /Instagram|FBAN|FBAV/.test(ua);
+            var isIOS = /iPhone|iPad|iPod/.test(ua);
+
+            if (isInstagram && isIOS) {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('shield-card').style.display = 'block';
+            } else {
+                window.location.replace(GOOGLE_SCRIPT_URL);
+            }
+        } catch (e) {
+            console.error("Redirect error:", e);
+            // Fallback: If everything fails, just show the link
+            document.body.innerHTML = '<div class="container"><h2>Vstup do testu</h2><p>Klikněte prosím <a href="' + GOOGLE_SCRIPT_URL + '">zde</a> pro zahájení.</p></div>';
+        }
+    })();
+</script>
+
+</body>
+</html>
