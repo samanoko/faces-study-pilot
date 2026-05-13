@@ -1,8 +1,12 @@
-<!DOCTYPE html>
-<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta property="og:title" content="Výzkum vnímání tváří">
+    <meta property="og:description" content="Krátký vědecký experiment zaměřený na vnímání atraktivity.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/d/15ybaIZueHCqj_nphT6ERH_2YZIWerQnd=s1000">
+    <meta property="og:type" content="website">
+
     <title>Výzkum vnímání tváří</title>
     <style>
         body { 
@@ -12,36 +16,28 @@
             justify-content: center; 
             min-height: 100vh; 
             margin: 0; 
-            background-color: #f4f7f6; /* Same light grey as your app */
+            background-color: #f4f7f6; 
             color: #333; 
         }
         .container { 
-            text-align: center; /* Center-align the whole container's standard content */
+            text-align: center; 
             background: white; 
             padding: 40px; 
             border-radius: 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            /* Added side padding as requested (40px) and kept original top/bottom */
-            padding-left: 40px;
-            padding-right: 40px;
             width: 90%; 
             max-width: 500px; 
-            box-sizing: border-box; /* Ensures padding is included in the width calculation */
+            box-sizing: border-box;
         }
         h2 { 
-            color: #007bff; /* Professional Blue */
+            color: #007bff; 
             margin-top: 0;
             font-size: 22px;
         }
-        
-        /* The specific paragraphs to left-align */
         .left-aligned-text {
             text-align: left;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 100%; /* Keep it constrained, though padding already helps */
+            margin-bottom: 20px;
         }
-
         .instruction-box { 
             text-align: left; 
             background: #f8f9fa; 
@@ -58,60 +54,5 @@
             letter-spacing: 1px;
         }
         b { color: #000; }
-        
-        /* Matching your main app's button style just in case */
-        .btn-dummy {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
-        }
     </style>
 </head>
-<body>
-
-<div id="loader" class="loading-dots">NAČÍTÁNÍ MODULU...</div>
-
-<div id="shield-card" class="container" style="display: none;">
-    <h2>Konfigurace prohlížeče</h2>
-    
-    <div class="left-aligned-text">
-        <p>Děkujeme za Váš zájem o účast v našem výzkumu.</p>
-        <p>Experiment je nutné spustit v externím prohlížeči.</p>
-    </div>
-    
-    <div class="instruction-box">
-        <strong>Instrukce:</strong><br><br>
-        1. Klepněte na <b>tři tečky (...)</b> v pravém horním rohu.<br>
-        2. Zvolte možnost <b>"Otevřít v externím prohlížeči"</b>.
-    </div>
-    
-    <p style="font-size: 14px; color: #888;">Po tomto kroku bude test automaticky zahájen.</p>
-</div>
-
-<script>
-    // Configuration: Replace with your actual Google Script URL
-    var GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyb-ExtSM6mtSwDGxsfbZssjsywPtLdsFuSkPssp8fIgCmz4oWa8L-eBQRPWyZ36oXb/exec";
-
-    (function() {
-        var ua = navigator.userAgent || navigator.vendor || window.opera;
-        var isInstagram = /Instagram|FBAN|FBAV/.test(ua);
-        var isIOS = /iPhone|iPad|iPod/.test(ua);
-
-        if (isInstagram && isIOS) {
-            // Instagram iOS: Show professional shield
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('shield-card').style.display = 'block';
-        } else {
-            // Everyone else: Redirect immediately
-            window.location.replace(GOOGLE_SCRIPT_URL);
-        }
-    })();
-</script>
-
-</body>
-</html>
